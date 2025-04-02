@@ -23,3 +23,46 @@ $positive  : #21BA45;
 $negative  : #C10015;
 $info      : #31CCEC;
 $warning   : #F2C037;
+
+$main-white : #FFFFFF;
+$main-red : #EC1F28;
+$main-gray: #757575;
+$main-blue : #B7C4EC;
+$colorset: (
+        primary: $primary,
+        secondary: $secondary,
+        positive: $positive,
+        negative: $negative,
+        main-red: $main-red,
+        main-white : $main-white,
+        main-gray : $main-gray,
+        main-blue : $main-blue,
+);
+
+@mixin text-color($name) {
+  color: map-get($colorset, $name) !important;
+}
+@mixin bg-color($name) {
+  background: map-get($colorset, $name) !important;
+}
+
+.text {
+  @each $key, $value in $colorset {
+    &-#{"#{$key}"} {
+      @include text-color($key);
+    }
+  }
+}
+.bg {
+  @each $key, $value in $colorset {
+    &-#{"#{$key}"} {
+      @include bg-color($key);
+    }
+  }
+}
+
+.q-field__control {
+  &:before {
+    border-color: $main-white !important;
+  }
+}
