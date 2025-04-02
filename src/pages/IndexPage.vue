@@ -39,7 +39,27 @@
             :title="content.title"
             :image="content.image"
             :fontSize="16"
+            style="margin-bottom: 40px"
           />
+        </div>
+        <div  class="main-white-box">
+          <p style="width: 65%">섹시함은 더 <span class="text-main-red">리얼</span>하게</p>
+          <p style="width: 70%">스토리는 더 <span class="text-main-red">자극적</span>으로</p>
+          <p style="width: 63%">출연진은 더 <span class="text-main-red">화려</span>하게</p>
+        </div>
+        <div class="inner-wrapper text-center text-main-white">
+          <p class=" text-bold" style="margin-bottom: 20px">📍 기존 채널에서 경험할 수 없는,<br>
+            ‘당신만의 팬덤’을 새롭게 창조할 순간이 시작됩니다.
+          </p>
+          <p class="custom-font" style="font-size: 24px; font-weight: 700; margin: 0"> <span class="custom-font text-main-red">픽미툰</span>에서 가장 먼저 활동하세요</p>
+        </div>
+        <div  class="main-footer" >
+          <q-img src="/icons/footer.png" class="main-footer-img"  />
+          <p class="inner-wrapper text-main-white text-center">
+            인플루언서에게는 새로운 무대, 새로운 팬덤 <br>
+            <strong>PickMeToon</strong>은 단순한 플랫폼이 아닙니다.<br>
+            브랜드가 되고 싶은 인플루언서들을 위한 프리미엄 무대입니다
+          </p>
         </div>
       </div>
     </div>
@@ -53,7 +73,7 @@
 import BaseCarousel from "components/BaseCarousel.vue";
 import MainData from "src/json/MainData.json"
 import ProductDialog from "src/dialogs/ProductDialog.vue";
-import {ref, onMounted, computed} from "vue";
+import {ref, computed} from "vue";
 import BaseMainContent from 'components/BaseMainContent.vue'
 
 const showProductDialog = ref(false)
@@ -71,36 +91,6 @@ const filteredInfluencers = computed(() => {
 //   selectedItem.value = ProductData;
 //   showProductDialog.value = true
 // }
-onMounted(() => {
-  console.log('--- MainData 디버깅 시작 ---');
-
-  // 전체 MainData 확인
-  console.log('MainData 전체:', MainData);
-
-  // contents 배열 확인
-  console.log('contents 배열 존재 여부:', MainData.contents);
-
-  if (MainData.contents) {
-    console.log('contents 배열 길이:', MainData.contents.length);
-
-    // 각 항목 내용 디버깅
-    MainData.contents.forEach((item, index) => {
-      console.log(`콘텐츠 항목 #${index + 1}:`, item);
-      console.log(`콘텐츠 #${index + 1} title:`, item.title);
-      console.log(`콘텐츠 #${index + 1} image:`, item.image);
-
-      // 추가 속성 확인
-      const otherProps = Object.keys(item).filter(key => key !== 'title' && key !== 'image');
-      if (otherProps.length > 0) {
-        console.log(`콘텐츠 #${index + 1} 기타 속성:`, otherProps);
-      }
-    });
-  } else {
-    console.warn('경고: contents 배열이 없거나 비어있습니다!');
-  }
-
-  console.log('--- MainData 디버깅 완료 ---');
-});
 </script>
 <style scoped>
 .main-page {
@@ -145,6 +135,24 @@ onMounted(() => {
   border: 1px solid #FF2D55;
   border-radius: 25px;
 }
+.main-white-box{
+  margin-bottom: 40px;
+}
+.main-white-box p{
+  padding-left: 30px;
+  font-size: 32px;
+  height: 50px;
+  font-weight: 800;
+  background-color: white;
+  line-height: 50px;
+  margin-bottom: 10px;
+}
+.main-footer{
+  margin-top: 60px;
+  .main-footer-img{
+    margin-bottom: 50px;
+  }
+}
 @media screen and (max-width: 960px) {
   .main-page {
     align-items: center;
@@ -166,6 +174,15 @@ onMounted(() => {
       height: 60px;
       padding: 17px 30px;
     }
+  }
+  .main-white-box p{
+    padding-left: 10px;
+    font-size: 24px;
+    height: 50px;
+    font-weight: 800;
+    background-color: white;
+    line-height: 50px;
+    margin-bottom: 10px;
   }
 }
 @media screen and (max-width: 400px) {
