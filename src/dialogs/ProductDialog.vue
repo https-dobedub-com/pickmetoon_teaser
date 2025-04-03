@@ -1,7 +1,7 @@
 <template>
   <q-dialog v-model="isOpen" maximized >
     <q-card class="dialog-card">
-      <q-btn class="close-btn" flat round dense v-close-popup :ripple="false">
+      <q-btn class="close-btn bg-main-white" flat round dense v-close-popup :ripple="false">
         <q-icon>
           <img src="/icons/close.svg" style="width: 24px; height: 24px;" alt="close"/>
         </q-icon>
@@ -9,26 +9,6 @@
       <div class="dialog-content">
         <div class="image-gallery">
           <img class="big-image" :src="currentImage" />
-
-          <!-- Left navigation button -->
-          <q-btn
-            class="nav-btn left-nav-btn"
-            round
-            color="grey-7"
-            icon="chevron_left"
-            @click="navigateToPrevInfluencer"
-            :disable="!hasPrevInfluencer"
-          />
-
-          <!-- Right navigation button -->
-          <q-btn
-            class="nav-btn right-nav-btn"
-            round
-            color="grey-7"
-            icon="chevron_right"
-            @click="navigateToNextInfluencer"
-            :disable="!hasNextInfluencer"
-          />
         </div>
         <div class="people-info">
           <div class="info-section scrollable" :class="{'desktop-layout': !isMobile}">
@@ -104,6 +84,26 @@
             </div>
           </div>
         </div>
+
+        <!-- Left navigation button -->
+        <q-btn
+          class="nav-btn left-nav-btn"
+          round
+          color="grey-7"
+          icon="chevron_left"
+          @click="navigateToPrevInfluencer"
+          :disable="!hasPrevInfluencer"
+        />
+
+        <!-- Right navigation button -->
+        <q-btn
+          class="nav-btn right-nav-btn"
+          round
+          color="grey-7"
+          icon="chevron_right"
+          @click="navigateToNextInfluencer"
+          :disable="!hasNextInfluencer"
+        />
       </div>
     </q-card>
   </q-dialog>
@@ -266,6 +266,7 @@ const openSnsLink = (type) => {
   top: 30px;
   width: 50px;
   height: 50px;
+
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
   z-index: 9999;
 }
@@ -297,14 +298,15 @@ const openSnsLink = (type) => {
   height: 40px;
   opacity: 0.8;
   z-index: 999;
+  bottom: 50%;
 }
 
 .left-nav-btn {
-  left: 15px;
+  left: 0;
 }
 
 .right-nav-btn {
-  right: 15px;
+  right: 0;
 }
 
 /* 데스크톱에서만 적용되는 높이 제한 */

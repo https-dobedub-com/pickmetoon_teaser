@@ -2,6 +2,7 @@
   "influencers": [
     {
       "name":"다연",
+      "button_image": "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/button_1.png",
       "profile_image": "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/main_1.png",
       "tag": "influencer",
       "body_profile":"169cm, 36 - 24 - 38",
@@ -26,6 +27,7 @@
     },
     {
       "name":"그린",
+      "button_image": "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/button_2.png",
       "profile_image": "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/main_2.png",
       "tag": "influencer",
       "body_profile":"167cm, 38 - 25 - 40",
@@ -50,6 +52,7 @@
     {
       "name":"태리",
       "profile_image": "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/main_7.png",
+      "button_image": "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/button_7.png",
       "tag": "influencer",
       "body_profile":"172cm, 52kg",
       "sns_list": [
@@ -73,6 +76,7 @@
     },
     {
       "name":"규리",
+      "button_image": "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/button_3.png",
       "profile_image": "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/main_3.png",
       "tag": "influencer",
       "body_profile":"166cm, 35 - 24 - 36",
@@ -97,6 +101,7 @@
     },
     {
       "name":"로빈",
+      "button_image": "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/button_4.png",
       "profile_image": "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/main_4.png",
       "tag": "influencer",
       "body_profile":"164cm, 53kg, 70H",
@@ -120,6 +125,7 @@
     },
     {
       "name":"수미",
+      "button_image": "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/button_6.png",
       "profile_image": "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/main_6.png",
       "corver_image": "",
       "body_profile":"162cm",
@@ -143,6 +149,7 @@
     },
     {
       "name":"서이",
+      "button_image": "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/button_5.png",
       "profile_image": "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/main_5.png",
       "corver_image": "",
       "body_profile":"169cm, 36 - 24 - 38",
@@ -167,6 +174,7 @@
     },
     {
       "name":"NEXT",
+      "button_image": "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/button_8.png",
       "profile_image": "",
       "corver_image": "",
       "body_profile":"169cm, 36 - 24 - 38",

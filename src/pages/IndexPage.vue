@@ -1,8 +1,39 @@
 <template>
   <q-page class="flex">
-    <div class="main-page">
+    <div class="main-page main-bg">
       <div class="main-image-inner">
-        <img alt="픽미툰 곧 오픈" src="/icons/Group-2613907.png" class="main-image" />
+        <img alt="픽미툰 곧 오픈" src="/icons/main-soon.png" class="main-image" />
+        <div class="buttons-grid-container">
+          <!-- 일반 인플루언서 버튼 -->
+          <q-img
+            v-for="(influencer) in clickableInfluencers"
+            :key="influencer.name"
+            :src="influencer.button_image"
+            class="dialog-btn"
+            @click="handleButtonClick(influencer)"
+          />
+
+          <!-- NEXT 버튼 (클릭 불가) -->
+          <q-img
+            v-if="nextButton"
+            :src="nextButton.button_image"
+            class="dialog-btn next-button"
+          />
+        </div>
+        <div class="main-txt">
+          <span>
+            런칭 카운트다운이 시작되었습니다 <br>
+            이 시대의 감각을 새롭게 정의하는 콘텐츠 플랫폼 <br>
+            PickMeToon — 당신의 감성과 취향에 완벽히 맞춰진 콘텐츠
+          </span>
+          <p>
+            📍 COMING SOON <br>
+            🎁 곧 공개될 프리미엄 런칭 이벤트를 놓치지 마세요
+          </p>
+        </div>
+        <div class="contect" style="margin: 50px; color: white; font-size: 16px; font-weight: bold;">
+          📬CONTACT : pickmetoon@naver.com
+        </div>
       </div>
       <div class="main-data">
         <div class="main-data-header">
@@ -34,7 +65,7 @@
             <p>그리고 콘텐츠마다 각인되는 목소리의 아이덴티티</p>
           </div>
           <BaseMainContent
-            v-for="content in MainData.contents"
+            v-for="content in contents"
             :key="content.title"
             :title="content.title"
             :image="content.image"
@@ -74,23 +105,67 @@
 </template>
 <script setup>
 import BaseCarousel from "components/BaseCarousel.vue";
-import MainData from "src/json/MainData.json"
 import ProductDialog from "src/dialogs/ProductDialog.vue";
-import {ref, computed} from "vue";
+import {ref, computed, onMounted} from "vue";
 import BaseMainContent from 'components/BaseMainContent.vue'
 
-const showProductDialog = ref(false)
-const selectedItem = ref(null)
-const currentInfluencerIndex = ref(-1)
+// 데이터 초기화 (MainData.json 직접 임포트 대신 reactive 상태 사용)
+const influencers = ref([]);
+const contents = ref([]);
 
-// 프로필 이미지가 있는 인플루언서만 필터링
+// 데이터 로드 함수
+const loadData = async () => {
+  try {
+    // 모듈 동적 임포트
+    const MainData = await import("src/json/MainData.json");
+    if (MainData && MainData.default) {
+      influencers.value = MainData.default.influencers || [];
+      contents.value = MainData.default.contents || [];
+    }
+  } catch (error) {
+    console.error("데이터 로드 중 오류 발생:", error);
+    // 기본값 설정
+    influencers.value = [];
+    contents.value = [];
+  }
+};
+
+// 컴포넌트 마운트 시 데이터 로드
+onMounted(() => {
+  loadData();
+});
+
+const showProductDialog = ref(false);
+const selectedItem = ref(null);
+const currentInfluencerIndex = ref(-1);
+
+// 프로필 이미지가 있는 인플루언서만 필터링 (클릭 가능한 인플루언서)
 const filteredInfluencers = computed(() => {
-  return MainData.influencers.filter(influencer =>
-    influencer.profile_image !== null &&
-    influencer.profile_image !== ''
+  return influencers.value.filter(influencer =>
+    influencer &&
+    influencer.profile_image &&
+    influencer.profile_image !== '' &&
+    influencer.name !== 'NEXT'  // NEXT는 제외
   );
 });
 
+// 버튼 이미지가 있고 NEXT가 아닌 인플루언서만 필터링 (클릭 가능한 버튼)
+const clickableInfluencers = computed(() => {
+  return filteredInfluencers.value.filter(influencer =>
+    influencer &&
+    influencer.button_image &&
+    influencer.button_image !== ''
+  );
+});
+
+// NEXT 버튼 찾기
+const nextButton = computed(() => {
+  return influencers.value.find(influencer =>
+    influencer && influencer.name === 'NEXT' && influencer.button_image
+  );
+});
+
+// 기존 캐러셀 클릭 핸들러
 const handleItemClick = (item) => {
   if (!item) {
     console.error('선택된 아이템이 없습니다');
@@ -101,7 +176,25 @@ const handleItemClick = (item) => {
 
   // Find index of the selected influencer in the filtered list
   currentInfluencerIndex.value = filteredInfluencers.value.findIndex(infl =>
-    infl.id === item.id || infl.name === item.name
+    infl && infl.name === item.name
+  );
+
+  selectedItem.value = item;
+  showProductDialog.value = true;
+};
+
+// 버튼 이미지 클릭 핸들러 (기존 함수와 동일한 기능)
+const handleButtonClick = (item) => {
+  if (!item) {
+    console.error('선택된 아이템이 없습니다');
+    return;
+  }
+
+  console.log('버튼 클릭 - 선택된 인플루언서:', item.name); // 디버깅용
+
+  // 인덱스 찾기
+  currentInfluencerIndex.value = filteredInfluencers.value.findIndex(infl =>
+    infl && infl.name === item.name
   );
 
   selectedItem.value = item;
@@ -119,17 +212,75 @@ const navigateToInfluencer = (newIndex) => {
 <style scoped>
 .main-page {
   width: 100%;
-  background-color: black;
   box-sizing: content-box;
   display: flex;
   justify-content: center;
   gap: 50px;
 }
+.main-txt{
+  padding: 16px 18px;
+  color: white;
+  border-radius: 10px;
+  background-color: #3C3C3C;
+
+  p{
+    margin: 0;
+    margin-top: 10px;
+    font-size: 16px;
+  }
+}
+.main-image-inner {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
 .main-image{
-  margin-top: 70px;
+  margin-top: 200px;
   max-width: 100%;
   max-height: 656px;
   object-fit: contain !important;
+}
+
+/* 버튼 그리드 컨테이너 스타일 - 양쪽 끝까지 넓게 배치 */
+.buttons-grid-container {
+  width: 100%;
+  margin-top: 40px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 400px;
+  padding: 0 10px;
+  box-sizing: border-box;
+}
+
+.dialog-btn {
+  width: 80px;
+  height: 113px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  border-radius: 12px;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  flex: 0 0 auto;
+}
+
+.dialog-btn:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* NEXT 버튼 스타일 - 호버 효과 제거, 투명도 효과 추가 */
+.next-button {
+  cursor: default;
+  filter: brightness(0.9);
+}
+
+.next-button:hover {
+  transform: none;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
 .main-data{
@@ -187,6 +338,22 @@ const navigateToInfluencer = (newIndex) => {
   }
   .main-image-inner{
     padding: 0 18px;
+    width: 100%;
+  }
+
+  .main-image {
+    margin-top: 200px;
+  }
+
+  /* 중간 크기 화면에서 그리드 조정 */
+  .buttons-grid-container {
+    max-width: 350px;
+  }
+
+  .dialog-btn {
+    width: 70px;
+    height: 99px;
+    margin-bottom: 15px;
   }
 }
 
@@ -209,7 +376,20 @@ const navigateToInfluencer = (newIndex) => {
     line-height: 50px;
     margin-bottom: 10px;
   }
+
+  /* 작은 화면에서 그리드 조정 */
+  .buttons-grid-container {
+    max-width: 300px;
+  }
+
+  .dialog-btn {
+    width: 60px;
+    height: 85px;
+    border-radius: 8px;
+    margin-bottom: 12px;
+  }
 }
+
 @media screen and (max-width: 400px) {
   .custom-font.chip{
     display: inline-block;
@@ -221,7 +401,19 @@ const navigateToInfluencer = (newIndex) => {
     border: 1px solid #FF2D55;
     border-radius: 25px;
   }
+
+  .buttons-grid-container {
+    max-width: 280px;
+  }
+
+  .dialog-btn {
+    width: 55px;
+    height: 78px;
+    border-radius: 6px;
+    margin-bottom: 10px;
+  }
 }
+
 @media screen and (max-width: 360px) {
   .main-white-box p{
     padding-left: 10px;
@@ -231,6 +423,17 @@ const navigateToInfluencer = (newIndex) => {
     background-color: white;
     line-height: 50px;
     margin-bottom: 10px;
+  }
+
+  /* 가장 작은 화면에서 그리드 조정 */
+  .buttons-grid-container {
+    max-width: 240px;
+  }
+
+  .dialog-btn {
+    width: 48px;
+    height: 68px;
+    margin-bottom: 8px;
   }
 }
 </style>

@@ -32,5 +32,8 @@
   font-family: 'Nanum Pen Script', cursive;
 }
 .main-bg{
+  height: 100%;
+  background-repeat: no-repeat;
+  background-size: cover;
   background-image: url("/public/background/MAIN.png");
 }
