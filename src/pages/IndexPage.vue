@@ -42,19 +42,19 @@
             style="margin-bottom: 40px"
           />
         </div>
-        <div  class="main-white-box">
-          <p style="width: 65%">섹시함은 더 <span class="text-main-red">리얼</span>하게</p>
-          <p style="width: 70%">스토리는 더 <span class="text-main-red">자극적</span>으로</p>
-          <p style="width: 63%">출연진은 더 <span class="text-main-red">화려</span>하게</p>
+        <div class="main-white-box">
+          <p style=" width: 65%">섹시함은 더 <span class="text-main-red">리얼</span>하게</p>
+          <p style=" width: 70%">스토리는 더 <span class="text-main-red">자극적</span>으로</p>
+          <p style=" width: 63%">출연진은 더 <span class="text-main-red">화려</span>하게</p>
         </div>
         <div class="inner-wrapper text-center text-main-white">
-          <p class=" text-bold" style="margin-bottom: 20px">📍 기존 채널에서 경험할 수 없는,<br>
-            ‘당신만의 팬덤’을 새롭게 창조할 순간이 시작됩니다.
+          <p class="text-bold" style="margin-bottom: 20px">📍 기존 채널에서 경험할 수 없는,<br>
+            '당신만의 팬덤'을 새롭게 창조할 순간이 시작됩니다.
           </p>
           <p class="custom-font" style="font-size: 24px; font-weight: 700; margin: 0"> <span class="custom-font text-main-red">픽미툰</span>에서 가장 먼저 활동하세요</p>
         </div>
-        <div  class="main-footer" >
-          <q-img src="/icons/footer.png" class="main-footer-img"  />
+        <div class="main-footer">
+          <q-img src="/icons/footer.png" class="main-footer-img" />
           <p class="inner-wrapper text-main-white text-center">
             인플루언서에게는 새로운 무대, 새로운 팬덤 <br>
             <strong>PickMeToon</strong>은 단순한 플랫폼이 아닙니다.<br>
@@ -65,7 +65,7 @@
     </div>
     <ProductDialog
       v-model="showProductDialog"
-      :product="selectedItem"
+      :influencer="selectedItem"
     />
   </q-page>
 </template>
@@ -87,10 +87,17 @@ const filteredInfluencers = computed(() => {
   );
 });
 
-// const handleItemClick = () => {
-//   selectedItem.value = ProductData;
-//   showProductDialog.value = true
-// }
+const handleItemClick = (item) => {
+  if (!item) {
+    console.error('선택된 아이템이 없습니다');
+    return;
+  }
+
+  console.log('선택된 인플루언서:', item.name); // 디버깅용
+
+  selectedItem.value = item;
+  showProductDialog.value = true;
+};
 </script>
 <style scoped>
 .main-page {
@@ -148,11 +155,12 @@ const filteredInfluencers = computed(() => {
   margin-bottom: 10px;
 }
 .main-footer{
-  margin-top: 60px;
+  margin: 60px 0;
   .main-footer-img{
     margin-bottom: 50px;
   }
 }
+
 @media screen and (max-width: 960px) {
   .main-page {
     align-items: center;
@@ -195,6 +203,17 @@ const filteredInfluencers = computed(() => {
     text-align: center;
     border: 1px solid #FF2D55;
     border-radius: 25px;
+  }
+}
+@media screen and (max-width: 360px) {
+  .main-white-box p{
+    padding-left: 10px;
+    font-size: 20px;
+    height: 50px;
+    font-weight: 800;
+    background-color: white;
+    line-height: 50px;
+    margin-bottom: 10px;
   }
 }
 </style>

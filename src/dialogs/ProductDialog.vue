@@ -1,105 +1,88 @@
-<!-- components/ItemDialog.vue -->
 <template>
-  <q-dialog v-model="isOpen">
+  <q-dialog v-model="isOpen" maximized >
     <q-card class="dialog-card">
       <q-btn class="close-btn" flat round dense v-close-popup :ripple="false">
         <q-icon>
           <img src="/icons/close.svg" style="width: 50px; height: 50px;" alt="close"/>
         </q-icon>
       </q-btn>
-      <div class="product-background"
-           :style="{backgroundImage: `url(${product.background})`}"
-      >
-        <div class="product-title">
-          <img :src="product.titleImage" alt="title" class="title-image"/>
-          <div class="button-group">
-            <button type="button" class="go-product">작품 바로가기</button>
-            <button type="button" class="bookmark">찜하기</button>
-          </div>
+      <div class="dialog-content">
+        <div class="image-gallery">
+          <q-img class="big-image" :src="currentImage" style="width: 540px"/>
         </div>
-      </div>
-      <div class="product-info">
-        <p class="subtitle">{{ product.subtitle }}</p>
-        <p class="description">{{ product.description }}</p>
-      </div>
-      <div class="episode-list">
-        <div class="section-header row justify-between items-center">
-          <h3 class="section-title">회차</h3>
-          <q-btn
-              class="sort-btn"
-              flat
-              @click="isReversed = !isReversed"
-              :ripple="false"
-          >
-            <span class="sort-text">{{ isReversed ? '최신순' : '처음부터' }}</span>
-            <q-icon>
-              <img src="/icons/sort.svg" style="width: 32px; height: 32px;" alt="sort"/>
-            </q-icon>
-          </q-btn>
-        </div>
-        <div class="episodes">
-          <div
-              v-for="(episode, index) in displayedEpisodes"
-              :key="index"
-              class="episode-item row items-center justify-between"
-          >
-            <div class="row items-center justify-start">
-              <p class="episode-number">
-                {{ isReversed ? totalEpisodes - index : index + 1 }}
-              </p>
-              <div class="thumbnail">
-                <q-img :src="episode.thumbnail" :alt="episode.title" class="thumbnail-image" fit="cover"/>
-              </div>
-              <p class="title">{{ episode.title }}</p>
+        <div class="people-info">
+          <div class="info-section scrollable" :class="{'desktop-layout': !isMobile}">
+            <div class="influencer-profile">
+              <strong class="influencer-name custom-font">{{ influencer.name }}</strong>
+              <span v-if="influencer.tag">{{influencer.tag}}</span>
             </div>
-            <p class="duration">{{ episode.duration }}</p>
-          </div>
-        </div>
-        <div v-if="product.episodes.length > 5" class="divider">
-          <q-btn class="expand-btn" @click="isEpisodeExpanded = !isEpisodeExpanded" flat no-focus>
-            <q-icon>
-              <img src="/icons/expand.svg" :class="{ 'rotate-180': isEpisodeExpanded }" style="width: 48px; height: 48px;" alt="expand"/>
-            </q-icon>
-          </q-btn>
-        </div>
-      </div>
-      <div class="similar-list">
-        <div class="section-header">
-          <h3 class="section-title">유사한 작품</h3>
-        </div>
-        <div class="similar row justify-start" style="gap: 10px">
-          <div
-              v-for="(similar, index) in displayedSimilar"
-              :key="index"
-              class="similar-item"
-          >
-            <div class="similar-thumbnail">
-              <q-img :src="similar.image" alt="similar product" class="similar-image" fit="cover"/>
-            </div>
-          </div>
-        </div>
-        <div v-if="product.similarList?.length > 8" class="divider">
-          <q-btn class="expand-btn" @click="isSimilarExpanded = !isSimilarExpanded" flat no-focus>
-            <q-icon>
-              <img
-                  src="/icons/expand.svg"
-                  :class="{ 'rotate-180': isSimilarExpanded }"
-                  style="width: 48px; height: 48px;"
-                  alt="expand"
+            <p class="body-profile custom-font-size" v-if="influencer.body_profile">{{ influencer.body_profile }}</p>
+            <div class="sns-links" v-if="hasAnySns">
+              <q-img
+                flat
+                class="sns-btn"
+                v-if="hasInstagram"
+                @click="openSnsLink('instagram')"
+                src="https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/link_insta.png"
+                style="cursor: pointer;"
               />
-            </q-icon>
-          </q-btn>
-        </div>
-      </div>
-      <div class="detail">
-        <div class="section-header">
-          <h3 class="section-title">상세정보</h3>
-        </div>
-        <div class="detail-info">
-          <p class="writer">글작가: {{ product.detail.writer}}</p>
-          <p class="illustrator">그림작가: {{ product.detail.illustrator}}</p>
-          <p class="cast">출연: {{ product.detail.cast}}</p>
-          <p class="genre">장르: {{ product.detail.genre}}</p>
+              <q-img
+                flat
+                class="sns-btn"
+                v-if="hasYoutube"
+                @click="openSnsLink('youtube')"
+                src="https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/link_youtube.png"
+                style="cursor: pointer;"
+              />
+              <q-img
+                flat
+                class="sns-btn"
+                v-if="hasTiktok"
+                @click="openSnsLink('tictok')"
+                src="https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/link_tiktok.png"
+                style="cursor: pointer;"
+              />
+              <q-img
+                flat
+                class="sns-btn"
+                v-if="hasX"
+                @click="openSnsLink('x')"
+                src="https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/link_twitter.png"
+                style="cursor: pointer;"
+              />
+              <q-img
+                flat
+                class="sns-btn"
+                v-if="hasFantrie"
+                @click="openSnsLink('fantrie')"
+                src="https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/link_fantire.png"
+                style="cursor: pointer;"
+              />
+              <q-img
+                flat
+                class="sns-btn"
+                v-if="hasLikey"
+                @click="openSnsLink('likey')"
+                src="https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/link_likey.png"
+                style="cursor: pointer;"
+              />
+            </div>
+            <p class="description">{{ influencer.description }}</p>
+          </div>
+
+          <div class="thumbnail-section" :class="{'desktop-layout': !isMobile}">
+            <div class="thumbnails-container">
+              <div
+                v-for="(image, index) in influencer.image_list"
+                :key="index"
+                class="thumbnail"
+                @click="currentImage = image"
+                :class="{ 'active': currentImage === image }"
+              >
+                <q-img :src="image" class="thumbnail-image" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </q-card>
@@ -107,14 +90,14 @@
 </template>
 
 <script setup>
-import {defineProps, defineEmits, computed, ref} from 'vue'
+import { defineProps, defineEmits, computed, ref, watch, onMounted, onBeforeUnmount } from 'vue'
 
 const props = defineProps({
   modelValue: {
     type: Boolean,
     default: false
   },
-  product: {
+  influencer: {
     type: Object,
     default: () => ({})
   }
@@ -126,279 +109,279 @@ const isOpen = computed({
   set: (value) => emit('update:modelValue', value)
 })
 
-const isReversed = ref(false)
-const isEpisodeExpanded = ref(false)
-const isSimilarExpanded = ref(false)
-const totalEpisodes = computed(() => props.product.episodes?.length || 0)
+// 선택된 이미지
+const currentImage = ref('')
 
-// 표시할 에피소드 계산
-const displayedEpisodes = computed(() => {
-  let episodes = [...(props.product.episodes || [])]
+// 모바일 화면 체크
+const isMobile = ref(false)
 
-  if (isReversed.value) {
-    episodes = episodes.slice().reverse()
+// 화면 크기 변경 감지
+const checkScreenSize = () => {
+  isMobile.value = window.innerWidth <= 960
+}
+
+// 다이얼로그가 열릴 때 첫 번째 이미지를 기본값으로 설정
+const updateCurrentImage = () => {
+  if (props.influencer && props.influencer.image_list && props.influencer.image_list.length > 0) {
+    currentImage.value = props.influencer.image_list[0]
   }
+}
 
-  if (!isEpisodeExpanded.value) {
-    episodes = episodes.slice(0, 5)
+// isOpen 값이 변경될 때마다 이미지 업데이트
+watch(() => isOpen.value, (newVal) => {
+  if (newVal) {
+    updateCurrentImage()
   }
-
-  return episodes
 })
 
-// 표시할 유사 작품 계산
-const displayedSimilar = computed(() => {
-  let similar = [...(props.product.similarList || [])]
+// 컴포넌트가 마운트될 때와 influencer 값이 변경될 때도 이미지 업데이트
+watch(() => props.influencer, () => {
+  updateCurrentImage()
+}, { immediate: true })
 
-  if (!isSimilarExpanded.value) {
-    similar = similar.slice(0, 8)
-  }
-
-  return similar
+onMounted(() => {
+  updateCurrentImage()
+  checkScreenSize()
+  window.addEventListener('resize', checkScreenSize)
 })
+
+onBeforeUnmount(() => {
+  window.removeEventListener('resize', checkScreenSize)
+})
+
+// SNS 링크 존재 확인 함수
+const checkSnsLink = (type) => {
+  return props.influencer?.sns_list &&
+    props.influencer.sns_list.some(sns => sns[type] && sns[type] !== '')
+}
+
+// 각 SNS 플랫폼 링크 확인
+const hasInstagram = computed(() => checkSnsLink('instagram'))
+const hasYoutube = computed(() => checkSnsLink('youtube'))
+const hasTiktok = computed(() => checkSnsLink('tictok'))
+const hasX = computed(() => checkSnsLink('x'))
+const hasFantrie = computed(() => checkSnsLink('fantrie'))
+const hasLikey = computed(() => checkSnsLink('likey'))
+
+// 어떤 SNS 링크라도 있는지 확인
+const hasAnySns = computed(() => {
+  return hasInstagram.value || hasYoutube.value || hasTiktok.value ||
+    hasX.value || hasFantrie.value || hasLikey.value
+})
+
+// SNS URL 가져오기
+const getSnsUrl = (type) => {
+  if (!checkSnsLink(type)) return ''
+  const snsObj = props.influencer.sns_list.find(sns => sns[type])
+  return snsObj[type] || ''
+}
+
+// SNS 링크 열기
+const openSnsLink = (type) => {
+  const url = getSnsUrl(type)
+  if (url) {
+    window.open(url, '_blank')
+  }
+}
 </script>
 
 <style scoped>
+/* 스크롤 가능하지만 스크롤바는 보이지 않게 하는 클래스 */
+.scrollable {
+  overflow-y: auto !important;
+  scrollbar-width: none; /* Firefox */
+  -ms-overflow-style: none; /* IE and Edge */
+}
+
+.scrollable::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
+
 .dialog-card {
-  min-width: 1095px;
-  max-width: 1095px;
+  max-width: 944px !important;
+  max-height: 720px !important;
+  width: 944px !important;
+  height: 720px !important;
+  margin: auto;
   position: relative;
-  background-color: #181818;
+  background-color: white;
+  border-radius: 10px !important;
+  overflow: hidden; /* 필요한 경우에만 스크롤 */
+}
 
-  .close-btn {
-    position: absolute;
-    right: 30px;
-    top: 30px;
-    width: 50px;
-    height: 50px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
-    z-index: 9999;
-  }
+.close-btn {
+  position: absolute;
+  right: 30px;
+  top: 30px;
+  width: 50px;
+  height: 50px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.25);
+  z-index: 9999;
+}
 
-  .product-background {
-    width: 100%;
-    height: 720px;
-    background-size: contain;
-    background-position: center top;
-    background-repeat: no-repeat;
+.dialog-content {
+  display: flex;
+  height: 100%;
+  width: 100%;
+}
+
+.image-gallery {
+  width: 540px;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.big-image {
+  height: auto;
+  object-fit: contain;
+}
+
+/* 데스크톱에서만 적용되는 높이 제한 */
+.desktop-layout {
+  height: 50%;
+}
+
+.info-section {
+  padding-right: 10px;
+}
+
+.thumbnail-section {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.thumbnails-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  gap: 10px;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.thumbnail {
+  aspect-ratio: 1 / 1;
+  cursor: pointer;
+  border: 2px solid transparent;
+  border-radius: 5px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.thumbnail.active {
+  border-color: #FF2D55;
+}
+
+.thumbnail-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.sns-links{
+  margin: 10px 0;
+  display: flex;
+  gap: 10px;
+}
+
+.people-info {
+  width: 404px;
+  padding: 30px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.influencer-profile {
+  display: flex;
+  align-items: baseline;
+  gap: 15px;
+}
+
+.influencer-name {
+  font-size: 32px;
+  font-weight: 800;
+  margin: 0;
+}
+
+.body-profile {
+  font-size: 18px;
+  margin: 0;
+}
+
+.description {
+  font-size: 12px;
+  line-height: 1.5;
+  white-space: pre-wrap;
+  margin: 0;
+}
+
+.sns-btn {
+  width: 30px; height: 30px;
+}
+
+@media screen and (max-width: 960px) {
+  .dialog-card {
+    max-width: 405px !important;
+    max-height: 90vh !important;
+    width: 90vw !important;
+    height: 90vh !important;
+    margin: auto;
     position: relative;
-
-    &:after {
-      content: '';
-      position: absolute;
-      bottom: 0;
-      left: 0;
-      right: 0;
-      height: 360px;
-      background: linear-gradient(
-          to top,
-          rgba(24, 24, 24, 1) 50%,
-          rgba(24, 24, 24, 0.95) 52%,
-          rgba(24, 24, 24, 0.9) 55%,
-          rgba(24, 24, 24, 0.85) 57%,
-          rgba(24, 24, 24, 0.8) 60%,
-          rgba(24, 24, 24, 0.7) 70%,
-          rgba(24, 24, 24, 0.6) 80%,
-          rgba(24, 24, 24, 0.5) 90%,
-          transparent 100%
-      );
-      pointer-events: none;
-      z-index: 1;
-    }
-
-    .product-title {
-      position: absolute;
-      left: 75px;
-      bottom: 20px;
-      z-index: 2;
-
-      .title-image {
-        height: 180px;
-        margin: 0 0 45px;
-      }
-
-      .button-group {
-        display: flex;
-        gap: 30px;
-
-        button {
-          border: 1px solid #fff;
-          border-radius: 10px;
-          outline: none;
-          line-height: 1;
-          font-size: 24px;
-          font-weight: 900;
-          padding: 0 35px 0 65px;
-          height: 58px;
-          background-position: 22px center;
-          background-repeat: no-repeat;
-          cursor: pointer;
-
-          &.go-product {
-            background-size: 24px 24px;
-            background-color: #fff;
-            color: #000;
-            background-image: url("/icons/go-btn.svg");
-          }
-
-          &.bookmark {
-            background-size: 29px 28px;
-            background-color: transparent;
-            color: #fff;
-          }
-        }
-      }
-    }
+    background-color: white;
+    border-radius: 10px !important;
   }
 
-  .product-info {
-    padding: 35px 75px 40px 75px;
+  .dialog-content {
+    flex-direction: column;
+    overflow-y: auto !important; /* 중요: 모바일에서 스크롤 허용 */
+    height: 100%;
+  }
 
-    p {
-      color: #fff;
-      letter-spacing: -0.5px;
-      margin: 0;
-      font-size: 24px;
+  .image-gallery {
+    width: 100%;
+    height: auto;
+    min-height: 300px;
+    max-height: 50vh;
+  }
 
-      &.subtitle {
-        font-weight: 900;
-        line-height: 1;
-        margin-bottom: 20px;
-      }
+  .big-image {
+    width: 100% !important;
+  }
 
-      &.description {
-        font-weight: 400;
-        line-height: 1.5;
-        white-space: pre-wrap;
-      }
-    }
+  .people-info {
+    width: 100%;
+    padding: 20px;
+    overflow-y: visible; /* 중요: 스크롤을 .dialog-content로 위임 */
   }
-  .section-header {
-    padding-bottom: 25px;
-    .section-title {
-      margin: 0;
-      color: #fff;
-      font-size: 32px;
-      font-weight: 900;
-      line-height: 1;
-      letter-spacing: -0.5px;
-    }
-    .sort-btn {
-      padding: 0;
-      .sort-text {
-        color: #fff;
-        font-size: 27px;
-        font-weight: 400;
-        line-height: 1;
-        letter-spacing: -0.5px;
-        padding-right: 10px;
-      }
-    }
+  .influencer-profile{
+    margin-top: 20px;
   }
-  .episode-list {
-    padding: 70px 75px 0 75px;
-    border-top: 1px solid #d9d9d9;
-    .episodes {
-      .episode-item {
-        padding: 17px 0;
-        &:not(:last-of-type) {
-          border-bottom: 1px solid #d9d9d9;
-        }
-        >div {
-          .episode-number {
-            color: #fff;
-            font-size: 40px;
-            font-weight: 300;
-            line-height: 1;
-            letter-spacing: -0.5px;
-            margin: 0;
-            padding: 0 23px 0 17px;
-          }
-          .thumbnail {
-            cursor: pointer;
-            position: relative;
-            &:after {
-              content: '';
-              display: block;
-              position: absolute;
-              left: 50%;
-              top: 50%;
-              transform: translate(-50%, -50%);
-              width: 60px;
-              height: 60px;
-              border-radius: 50%;
-              background-image: url("/icons/play.svg");
-              background-position: center;
-              background-repeat: no-repeat;
-              background-size: cover;
-            }
-            .thumbnail-image {
-              width: 180px;
-              height: 100px;
-            }
-          }
-          .title {
-            padding: 0 0 0 23px;
-            margin: 0;
-            color: #fff;
-            font-size: 24px;
-            font-weight: 900;
-            line-height: 1;
-            letter-spacing: -0.5px;
-          }
-        }
-        .duration {
-          margin: 0;
-          color: #fff;
-          font-size: 24px;
-          font-weight: 300;
-          line-height: 1;
-          letter-spacing: -0.5px;
-        }
-      }
-    }
+  .info-section, .thumbnail-section {
+    height: auto !important; /* 중요: 모바일에서 높이 제한 해제 */
+    overflow: visible !important; /* 중요: 스크롤을 .dialog-content로 위임 */
   }
-  .similar-list {
-    padding: 60px 75px 0 75px;
-    .similar {
-      padding-bottom: 25px;
-      .similar-image {
-        width: 225px;
-        height: 337px;
-      }
-    }
+
+  .thumbnails-container {
+    padding: 5px;
+    gap: 5px;
   }
-  .detail {
-    padding: 60px 75px;
-    .detail-info {
-      p {
-        margin: 0;
-        color: #fff;
-        font-size: 18px;
-        font-weight: 700;
-        line-height: 1.5;
-        letter-spacing: -0.5px;
-      }
-    }
+
+  .influencer-name {
+    font-size: 24px;
   }
-}
-.divider {
-  height: 3px;
-  background-color: #d9d9d9;
-  overflow: visible;
-  position: relative;
-  .expand-btn {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 56px;
-    height: 56px;
-    border-radius: 50%;
+
+  .body-profile {
+    font-size: 16px;
   }
-}
-.rotate-180 {
-  transform: rotate(180deg);
-  transition: transform 0.3s ease;
+
+  .description {
+    font-size: 14px;
+  }
 }
 </style>

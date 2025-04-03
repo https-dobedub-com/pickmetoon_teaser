@@ -35,10 +35,7 @@ const props = defineProps({
     default: 16
   }
 });
-console.log("props 전체:", props);
-console.log("타이틀:", props.title);
-console.log("이미지:", props.image);
-console.log("폰트 크기:", props.fontSize);
+
 </script>
 
 <style scoped>

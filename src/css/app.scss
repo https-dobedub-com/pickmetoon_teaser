@@ -1,6 +1,7 @@
 // app global css in SCSS form
 @import url(https://cdn.jsdelivr.net/gh/moonspam/NanumSquare@2.0/nanumsquare.css);
 @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&display=swap');
+@import url('//fonts.googleapis.com/earlyaccess/nanumpenscript.css');
 @font-face {
   font-family: 'MBC1961M';
   src: url('../assets/MBC1961M.woff2') format('woff2');
@@ -23,4 +24,7 @@
 
 .custom-font {
   font-family: 'MBC1961M', sans-serif !important;
+}
+.custom-font-size {
+  font-family: 'Nanum Pen Script', cursive;
 }

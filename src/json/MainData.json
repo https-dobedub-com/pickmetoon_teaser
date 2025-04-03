@@ -3,130 +3,142 @@
     {
       "name":"다연",
       "profile_image": "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/main_1.png",
-      "corver_image": "",
+      "tag": "influencer",
       "body_profile":"169cm, 36 - 24 - 38",
       "sns_list": [
         {"instagram": "https://www.instagram.com/dayeosin/"},
-        {"tictok": ""},
-        {"youtube": ""},
-        {"x": ""}
+        {"tictok": "https://www.tiktok.com/@dayeosin"},
+        {"youtube": "https://www.youtube.com/channel/UCQY6z3z_DrbU4Jfba1gHxmw"},
+        {"x": "https://x.com/dayeosin"},
+        {"fantrie": ""},
+        {"likey" : "" }
       ],
-      "career":"한림연예예술고등학교 뮤지컬과 졸업\n2016~2020 프로스포츠 치어리더(LG트윈스,SK와이번스 등)\n\n2023 맥심모델 선정\n2024 AGF 브라운더스트2 코스프레모델\n2024 올해의 레이싱 모델 TOP10 수상\n2025 일러스타페스, 서울코믹월드 코스프레모델\n2025 음원 자기야화풀어 발매\n킬링타임, 밀크필름 등 웹드라마\n출연 다수",
+      "description":"한림연예예술고등학교 뮤지컬과 졸업\n2016~2020 프로스포츠 치어리더(LG트윈스,SK와이번스 등)\n\n2023 맥심모델 선정\n2024 AGF 브라운더스트2 코스프레모델\n2024 올해의 레이싱 모델 TOP10 수상\n2025 일러스타페스, 서울코믹월드 코스프레모델\n2025 음원 자기야화풀어 발매\n킬링타임, 밀크필름 등 웹드라마\n출연 다수",
       "image_list": [
-        "이미지 링크21",
-        "이미지 링크3",
-        "이미지 링크4",
-        "이미지 링크5",
-        "이미지 링크6",
-        "이미지 링크7"
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_1_dayun/dayun_001.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_1_dayun/dayun_002.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_1_dayun/dayun_003.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_1_dayun/dayun_004.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_1_dayun/dayun_005.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_1_dayun/dayun_006.jpg"
       ],
       "click_link": ""
     },
     {
       "name":"그린",
       "profile_image": "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/main_2.png",
-      "corver_image": "",
-      "body_profile":"169cm, 36 - 24 - 38",
+      "tag": "influencer",
+      "body_profile":"167cm, 38 - 25 - 40",
       "sns_list": [
         {"instagram": "https://www.instagram.com/92green92/"},
         {"tictok": ""},
         {"youtube": ""},
-        {"x": ""}
+        {"x": ""},
+        {"fantrie": ""},
+        {"likey" : "https://likey.me/rin1492?utm_source=likey&utm_medium=5241777023483904" }
       ],
-      "career":"한림연예예술고등학교 뮤지컬과 졸업\n2016~2020 프로스포츠 치어리더(LG트윈스,SK와이번스 등)\n\n2023 맥심모델 선정\n2024 AGF 브라운더스트2 코스프레모델\n2024 올해의 레이싱 모델 TOP10 수상\n2025 일러스타페스, 서울코믹월드 코스프레모델\n2025 음원 자기야화풀어 발매\n킬링타임, 밀크필름 등 웹드라마\n출연 다수",
+      "description":"2023 미스맥심\n\n아주 어릴적 꿈이 성우였는데 이렇게 꿈을 이루게 되어 너무 기쁘고 여러분들에게 새로운모습으로 찾아뵐수 있어서 설레네요 ㅎㅎ\n저도  평소에 웹툰 많이보고 좋아하는데요 ! 이제 픽미툰과 함께 여러분들의 판타지를 채워드리고싶습니다❤잘부탁드려요!!",
       "image_list": [
-        "이미지 링크21",
-        "이미지 링크3",
-        "이미지 링크4",
-        "이미지 링크5",
-        "이미지 링크6",
-        "이미지 링크7"
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_2_green/green_001.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_2_green/green_002.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_2_green/green_003.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_2_green/green_004.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_2_green/green_005.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_2_green/green_006.jpg"
       ]
     },
     {
       "name":"태리",
       "profile_image": "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/main_7.png",
-      "corver_image": "",
-      "body_profile":"169cm, 36 - 24 - 38",
+      "tag": "influencer",
+      "body_profile":"172cm, 52kg",
       "sns_list": [
         {"instagram": "https://www.instagram.com/t_tae.ri/"},
         {"tictok": ""},
         {"youtube": ""},
-        {"x": ""}
+        {"x": ""},
+        {"fantrie": ""},
+        {"likey" : "" }
       ],
-      "career":"한림연예예술고등학교 뮤지컬과 졸업\n2016~2020 프로스포츠 치어리더(LG트윈스,SK와이번스 등)\n\n2023 맥심모델 선정\n2024 AGF 브라운더스트2 코스프레모델\n2024 올해의 레이싱 모델 TOP10 수상\n2025 일러스타페스, 서울코믹월드 코스프레모델\n2025 음원 자기야화풀어 발매\n킬링타임, 밀크필름 등 웹드라마\n출연 다수",
+      "description": "-",
       "image_list": [
-        "이미지 링크21",
-        "이미지 링크3",
-        "이미지 링크4",
-        "이미지 링크5",
-        "이미지 링크6",
-        "이미지 링크7"
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_7_taeri/taeri_001.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_7_taeri/taeri_002.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_7_taeri/taeri_003.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_7_taeri/taeri_004.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_7_taeri/taeri_005.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_7_taeri/taeri_006.jpg"
       ],
       "click_link": ""
     },
     {
-      "name":"큐리",
+      "name":"규리",
       "profile_image": "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/main_3.png",
-      "corver_image": "",
-      "body_profile":"169cm, 36 - 24 - 38",
+      "tag": "influencer",
+      "body_profile":"166cm, 35 - 24 - 36",
       "sns_list": [
         {"instagram": "https://www.instagram.com/gyu0re/"},
         {"tictok": ""},
         {"youtube": ""},
-        {"x": ""}
+        {"x": ""},
+        {"fantrie": ""},
+        {"likey" : "" }
       ],
-      "career":"한림연예예술고등학교 뮤지컬과 졸업\n2016~2020 프로스포츠 치어리더(LG트윈스,SK와이번스 등)\n\n2023 맥심모델 선정\n2024 AGF 브라운더스트2 코스프레모델\n2024 올해의 레이싱 모델 TOP10 수상\n2025 일러스타페스, 서울코믹월드 코스프레모델\n2025 음원 자기야화풀어 발매\n킬링타임, 밀크필름 등 웹드라마\n출연 다수",
+      "description": "2012-2013   여성댄스팀 큐브 \n\n2013-2014   댄스팀 미카엘,시크엔젤\n\n2014-2016   댄스팀 투엘, 아이시어백업 \n\n2016-2017   댄스팀 스텝걸, 걸그룹 에이시드 \n\n2020-2021   Sk농구 나이츠 치어리더 하나원큐 농구 치어리더\n\n전문분야는 섹시댄스!\n아직은 부족한점이 많지만 행복을 줄수있는 사람이 되도록 하겠습니다 ♥예쁘게 봐주세용♥",
       "image_list": [
-        "이미지 링크21",
-        "이미지 링크3",
-        "이미지 링크4",
-        "이미지 링크5",
-        "이미지 링크6",
-        "이미지 링크7"
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_3_gyuri/gyuri_001.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_3_gyuri/gyuri_002.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_3_gyuri/gyuri_003.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_3_gyuri/gyuri_004.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_3_gyuri/gyuri_005.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_3_gyuri/gyuri_006.jpg"
       ],
       "click_link": ""
     },
     {
       "name":"로빈",
       "profile_image": "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/main_4.png",
-      "corver_image": "",
-      "body_profile":"169cm, 36 - 24 - 38",
+      "tag": "influencer",
+      "body_profile":"164cm, 53kg, 70H",
       "sns_list": [
         {"instagram": "https://www.instagram.com/ro_bbin123/"},
         {"tictok": ""},
         {"youtube": ""},
-        {"x": ""}
+        {"x": "https://x.com/lobin188626?t=QQFK97Ea-u8fbQbfDlCBFg&s=32"},
+        {"fantrie": "http://fantrie.com/Robin"},
+        {"likey" : "" }
       ],
-      "career":"한림연예예술고등학교 뮤지컬과 졸업\n2016~2020 프로스포츠 치어리더(LG트윈스,SK와이번스 등)\n\n2023 맥심모델 선정\n2024 AGF 브라운더스트2 코스프레모델\n2024 올해의 레이싱 모델 TOP10 수상\n2025 일러스타페스, 서울코믹월드 코스프레모델\n2025 음원 자기야화풀어 발매\n킬링타임, 밀크필름 등 웹드라마\n출연 다수",
+      "description": "건축공학과 졸업, 건축기사 자격증보유\n\n미스맥심2023 출전\n\n일본 판티아활동\n\n글램 호스트 활동\n\n유튜브 비행시간 출연\n\n무비판타지 화보 레몬화보 키레이화보 \n\n슈프림 5월호  메인모델",
       "image_list": [
-        "이미지 링크21",
-        "이미지 링크3",
-        "이미지 링크4",
-        "이미지 링크5",
-        "이미지 링크6",
-        "이미지 링크7"
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_4_robin/robin_001.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_4_robin/robin_002.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_4_robin/robin_003.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_4_robin/robin_004.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_4_robin/robin_005.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_4_robin/robin_006.jpg"
       ]
     },
     {
       "name":"수미",
       "profile_image": "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/main_6.png",
       "corver_image": "",
-      "body_profile":"169cm, 36 - 24 - 38",
+      "body_profile":"162cm",
       "sns_list": [
         {"instagram": "https://www.instagram.com/sumi.kang_1204/"},
         {"tictok": ""},
         {"youtube": ""},
-        {"x": ""}
+        {"x": ""},
+        {"fantrie": ""},
+        {"likey" : "" }
       ],
-      "career":"한림연예예술고등학교 뮤지컬과 졸업\n2016~2020 프로스포츠 치어리더(LG트윈스,SK와이번스 등)\n\n2023 맥심모델 선정\n2024 AGF 브라운더스트2 코스프레모델\n2024 올해의 레이싱 모델 TOP10 수상\n2025 일러스타페스, 서울코믹월드 코스프레모델\n2025 음원 자기야화풀어 발매\n킬링타임, 밀크필름 등 웹드라마\n출연 다수",
+      "description": "수미의 새로운 도전 지켜봐주세용~!!",
       "image_list": [
-        "이미지 링크21",
-        "이미지 링크3",
-        "이미지 링크4",
-        "이미지 링크5",
-        "이미지 링크6",
-        "이미지 링크7"
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_6_sumi/sumi_001.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_6_sumi/sumi_002.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_6_sumi/sumi_003.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_6_sumi/sumi_004.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_6_sumi/sumi_005.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_6_sumi/sumi_006.jpg"
       ]
     },
     {
@@ -138,16 +150,18 @@
         {"instagram": "https://www.instagram.com/seoe.zoo/"},
         {"tictok": ""},
         {"youtube": ""},
-        {"x": ""}
+        {"x": ""},
+        {"fantrie": "https://fantrie.com/qt_seoe?fbclid=PAZXh0bgNhZW0CMTEAAaZep5QNMChT1U62Ws-VoLiicCdNqdSmGQ7i7w1k52B_fw-p7fluxu_ALPU_aem_uSW2lEpx_DodfWAIl2WiQA"},
+        {"likey" : "" }
       ],
-      "career":"한림연예예술고등학교 뮤지컬과 졸업\n2016~2020 프로스포츠 치어리더(LG트윈스,SK와이번스 등)\n\n2023 맥심모델 선정\n2024 AGF 브라운더스트2 코스프레모델\n2024 올해의 레이싱 모델 TOP10 수상\n2025 일러스타페스, 서울코믹월드 코스프레모델\n2025 음원 자기야화풀어 발매\n킬링타임, 밀크필름 등 웹드라마\n출연 다수",
+      "description":"-",
       "image_list": [
-        "이미지 링크21",
-        "이미지 링크3",
-        "이미지 링크4",
-        "이미지 링크5",
-        "이미지 링크6",
-        "이미지 링크7"
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_5_seoii/seoii_001.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_5_seoii/seoii_002.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_5_seoii/seoii_003.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_5_seoii/seoii_004.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_5_seoii/seoii_005.jpg",
+        "https://pikmetoon.s3.ap-northeast-2.amazonaws.com/teaser/images/modal_5_seoii/seoii_006.jpg"
       ],
       "click_link": ""
     },

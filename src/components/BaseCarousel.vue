@@ -12,7 +12,7 @@
             v-for="(slide, index) in slides"
             :key="slide.profile_image"
             class="slide-item"
-            @click="handleItemClick"
+            @click="() => handleItemClick(index)"
             :style="[
                 {
                   width: `${currentSlideWidth}px`,
@@ -136,13 +136,6 @@ onMounted(() => {
   window.addEventListener('resize', handleResize)
   startAutoSlide() // 자동 슬라이드 시작
 
-  // 디버깅용
-  console.log('슬라이드 설정:', {
-    containerWidth: props.containerWidth,
-    slideWidth: props.slideWidth,
-    gap: props.gap,
-    slides: props.slides.length
-  })
 })
 
 onUnmounted(() => {
@@ -205,13 +198,14 @@ const handleNext = () => {
 
 const emit = defineEmits(['item-click'])
 
-const handleItemClick = () => {
-  emit('item-click')
+const handleItemClick = (index) => {
+  const item = props.slides[index];
+  emit('item-click', item);
+
 }
 
 // 인스타그램 링크 열기
 const openInstagram = (slide) => {
-  // sns_list에서 인스타그램 링크 찾기
   if (slide.sns_list && Array.isArray(slide.sns_list)) {
     const instagramItem = slide.sns_list.find(item => item.instagram !== undefined)
     if (instagramItem && instagramItem.instagram) {
