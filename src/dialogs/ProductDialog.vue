@@ -3,7 +3,7 @@
     <q-card class="dialog-card">
       <q-btn class="close-btn" flat round dense v-close-popup :ripple="false">
         <q-icon>
-          <img src="/icons/close.svg" style="width: 50px; height: 50px;" alt="close"/>
+          <img src="/icons/close.svg" style="width: 24px; height: 24px;" alt="close"/>
         </q-icon>
       </q-btn>
       <div class="dialog-content">
