@@ -15,6 +15,9 @@
   user-select: none;
   -webkit-user-drag: none;
   font-family: "NanumSquare", sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
 }
 
 .inner-wrapper {

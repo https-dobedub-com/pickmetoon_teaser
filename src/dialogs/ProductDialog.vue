@@ -9,6 +9,26 @@
       <div class="dialog-content">
         <div class="image-gallery">
           <img class="big-image" :src="currentImage" />
+
+          <!-- Left navigation button -->
+          <q-btn
+            class="nav-btn left-nav-btn"
+            round
+            color="grey-7"
+            icon="chevron_left"
+            @click="navigateToPrevInfluencer"
+            :disable="!hasPrevInfluencer"
+          />
+
+          <!-- Right navigation button -->
+          <q-btn
+            class="nav-btn right-nav-btn"
+            round
+            color="grey-7"
+            icon="chevron_right"
+            @click="navigateToNextInfluencer"
+            :disable="!hasNextInfluencer"
+          />
         </div>
         <div class="people-info">
           <div class="info-section scrollable" :class="{'desktop-layout': !isMobile}">
@@ -100,10 +120,19 @@ const props = defineProps({
   influencer: {
     type: Object,
     default: () => ({})
+  },
+  // Add new props to support navigation
+  influencersList: {
+    type: Array,
+    default: () => []
+  },
+  currentIndex: {
+    type: Number,
+    default: -1
   }
 })
 
-const emit = defineEmits(['update:modelValue'])
+const emit = defineEmits(['update:modelValue', 'navigate-to-influencer'])
 const isOpen = computed({
   get: () => props.modelValue,
   set: (value) => emit('update:modelValue', value)
@@ -114,6 +143,28 @@ const currentImage = ref('')
 
 // 모바일 화면 체크
 const isMobile = ref(false)
+
+// Check if there are previous/next influencers
+const hasPrevInfluencer = computed(() => {
+  return props.currentIndex > 0
+})
+
+const hasNextInfluencer = computed(() => {
+  return props.currentIndex < props.influencersList.length - 1
+})
+
+// Navigation functions
+const navigateToPrevInfluencer = () => {
+  if (hasPrevInfluencer.value) {
+    emit('navigate-to-influencer', props.currentIndex - 1)
+  }
+}
+
+const navigateToNextInfluencer = () => {
+  if (hasNextInfluencer.value) {
+    emit('navigate-to-influencer', props.currentIndex + 1)
+  }
+}
 
 // 화면 크기 변경 감지
 const checkScreenSize = () => {
@@ -231,11 +282,29 @@ const openSnsLink = (type) => {
   display: flex;
   align-items: center;
   justify-content: center;
+  position: relative;
 }
 
 .big-image {
   height: 100%;
   object-fit: contain;
+}
+
+/* Navigation buttons */
+.nav-btn {
+  position: absolute;
+  width: 40px;
+  height: 40px;
+  opacity: 0.8;
+  z-index: 999;
+}
+
+.left-nav-btn {
+  left: 15px;
+}
+
+.right-nav-btn {
+  right: 15px;
 }
 
 /* 데스크톱에서만 적용되는 높이 제한 */

@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex main-bg">
+  <q-page class="flex">
     <div class="main-page">
       <div class="main-image-inner">
         <img alt="픽미툰 곧 오픈" src="/icons/Group-2613907.png" class="main-image" />
@@ -66,6 +66,9 @@
     <ProductDialog
       v-model="showProductDialog"
       :influencer="selectedItem"
+      :influencers-list="filteredInfluencers"
+      :current-index="currentInfluencerIndex"
+      @navigate-to-influencer="navigateToInfluencer"
     />
   </q-page>
 </template>
@@ -78,6 +81,7 @@ import BaseMainContent from 'components/BaseMainContent.vue'
 
 const showProductDialog = ref(false)
 const selectedItem = ref(null)
+const currentInfluencerIndex = ref(-1)
 
 // 프로필 이미지가 있는 인플루언서만 필터링
 const filteredInfluencers = computed(() => {
@@ -95,21 +99,34 @@ const handleItemClick = (item) => {
 
   console.log('선택된 인플루언서:', item.name); // 디버깅용
 
+  // Find index of the selected influencer in the filtered list
+  currentInfluencerIndex.value = filteredInfluencers.value.findIndex(infl =>
+    infl.id === item.id || infl.name === item.name
+  );
+
   selectedItem.value = item;
   showProductDialog.value = true;
+};
+
+// Function to navigate between influencers in the dialog
+const navigateToInfluencer = (newIndex) => {
+  if (newIndex >= 0 && newIndex < filteredInfluencers.value.length) {
+    currentInfluencerIndex.value = newIndex;
+    selectedItem.value = filteredInfluencers.value[newIndex];
+  }
 };
 </script>
 <style scoped>
 .main-page {
   width: 100%;
-
+  background-color: black;
   box-sizing: content-box;
   display: flex;
   justify-content: center;
   gap: 50px;
 }
 .main-image{
-  margin-top: 150px;
+  margin-top: 70px;
   max-width: 100%;
   max-height: 656px;
   object-fit: contain !important;
