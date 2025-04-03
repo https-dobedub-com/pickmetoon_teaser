@@ -8,7 +8,7 @@
       </q-btn>
       <div class="dialog-content">
         <div class="image-gallery">
-          <q-img class="big-image" :src="currentImage" style="width: 540px"/>
+          <img class="big-image" :src="currentImage" />
         </div>
         <div class="people-info">
           <div class="info-section scrollable" :class="{'desktop-layout': !isMobile}">
@@ -234,7 +234,7 @@ const openSnsLink = (type) => {
 }
 
 .big-image {
-  height: auto;
+  height: 100%;
   object-fit: contain;
 }
 
@@ -346,12 +346,10 @@ const openSnsLink = (type) => {
   .image-gallery {
     width: 100%;
     height: auto;
-    min-height: 300px;
-    max-height: 50vh;
   }
 
   .big-image {
-    width: 100% !important;
+    max-width: 100% !important;
   }
 
   .people-info {
