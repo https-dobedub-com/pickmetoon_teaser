@@ -1,5 +1,5 @@
 <template>
-  <q-page class="flex">
+  <q-page class="flex main-bg">
     <div class="main-page">
       <div class="main-image-inner">
         <img alt="픽미툰 곧 오픈" src="/icons/Group-2613907.png" class="main-image" />
@@ -102,14 +102,14 @@ const handleItemClick = (item) => {
 <style scoped>
 .main-page {
   width: 100%;
-  background-color: black;
+
   box-sizing: content-box;
   display: flex;
   justify-content: center;
   gap: 50px;
 }
 .main-image{
-  margin-top: 70px;
+  margin-top: 150px;
   max-width: 100%;
   max-height: 656px;
   object-fit: contain !important;
