@@ -30,9 +30,11 @@
             📍 COMING SOON <br>
             🎁 곧 공개될 프리미엄 런칭 이벤트를 놓치지 마세요
           </p>
-        </div>
-        <div class="contect" style="margin: 50px; color: white; font-size: 16px; font-weight: bold;">
-          📬CONTACT : pickmetoon@naver.com
+          <p class="contact">
+            다음 픽미툰 아티스트는 바로 당신입니다. <br>
+            상상이 현실이 되는 곳, 픽미툰과 함께하세요! <br>
+            📬CONTACT : pickmetoon@naver.com
+          </p>
         </div>
       </div>
       <div class="main-data">
@@ -225,8 +227,12 @@ const navigateToInfluencer = (newIndex) => {
 
   p{
     margin: 0;
-    margin-top: 10px;
+    margin-top: 20px;
     font-size: 16px;
+  }
+
+  p.contact{
+    font-weight: bold;
   }
 }
 .main-image-inner {
@@ -255,7 +261,6 @@ const navigateToInfluencer = (newIndex) => {
   padding: 0 10px;
   box-sizing: border-box;
 }
-
 .dialog-btn {
   width: 80px;
   height: 113px;
